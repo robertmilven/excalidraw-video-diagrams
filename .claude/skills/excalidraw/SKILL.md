@@ -87,17 +87,17 @@ When creating 3 options, vary these dimensions:
 
 ### Color Palette
 
-Use orange as the dominant color. Gray for supporting text and backgrounds. Green for success/completion states. Only bring in purple/blue if the diagram has 4+ distinct categories.
+Use color to encode meaning consistently. Pick a primary color that suits the diagram's subject.
 
 | Role | Stroke | Fill |
 |------|--------|------|
-| **Primary** (Orange) | `#e8590c` | `#ffd8a8` |
-| **Secondary** (Gray) | `#868e96` | `#e9ecef` |
-| **Tertiary** (Green) | `#2f9e44` | `#b2f2bb` |
-| **Accent** (Purple) | `#9c36b5` | `#eebefa` |
-| **Accent** (Blue) | `#1971c2` | `#a5d8ff` |
-| **Error/Blocked** (Red) | `#e03131` | `#ffc9c9` |
-| **Data/Storage** (Yellow) | `#e8590c` | `#ffec99` |
+| **Blue** | `#1971c2` | `#a5d8ff` |
+| **Green** | `#2f9e44` | `#b2f2bb` |
+| **Red** | `#e03131` | `#ffc9c9` |
+| **Orange** | `#e8590c` | `#ffd8a8` |
+| **Purple** | `#9c36b5` | `#eebefa` |
+| **Yellow** | `#e8590c` | `#ffec99` |
+| **Gray** | `#868e96` | `#e9ecef` |
 
 ### Visual Elements
 - **Emojis as icons** -- use relevant emojis in labels (e.g., "🧠 Claude thinks", "🎨 Drawing appears")
@@ -138,11 +138,11 @@ Stack 2-3 rectangles at decreasing opacity behind a shape to create depth.
 
 ```json
 {"id": "glow-outer", "type": "rectangle", "x": 95, "y": 95, "width": 210, "height": 70,
- "backgroundColor": "#ffd8a8", "opacity": 20, "strokeColor": "transparent"},
+ "backgroundColor": "#a5d8ff", "opacity": 20, "strokeColor": "transparent"},
 {"id": "glow-inner", "type": "rectangle", "x": 98, "y": 98, "width": 204, "height": 64,
- "backgroundColor": "#ffd8a8", "opacity": 40, "strokeColor": "transparent"},
+ "backgroundColor": "#a5d8ff", "opacity": 40, "strokeColor": "transparent"},
 {"id": "main-box", "type": "rectangle", "x": 100, "y": 100, "width": 200, "height": 60,
- "text": "Core Service", "backgroundColor": "#ffd8a8", "strokeColor": "#e8590c"}
+ "text": "Core Service", "backgroundColor": "#a5d8ff", "strokeColor": "#1971c2"}
 ```
 
 ### 2. Color-Coded Zones
@@ -197,7 +197,7 @@ Solid-filled circles with white numbers for step sequences:
 
 ```json
 {"id": "badge-1", "type": "ellipse", "x": 100, "y": 100, "width": 50, "height": 50,
- "backgroundColor": "#e8590c", "strokeColor": "#e8590c", "roughness": 0,
+ "backgroundColor": "#1971c2", "strokeColor": "#1971c2", "roughness": 0,
  "text": "1", "fontSize": 24, "textAlign": "center"}
 ```
 
@@ -207,7 +207,7 @@ Emojis render beautifully at any size. Use them to make labels scannable:
 
 ```json
 {"type": "rectangle", "x": 100, "y": 100, "width": 200, "height": 60,
- "text": "🧠 Claude thinks", "backgroundColor": "#ffd8a8"}
+ "text": "🧠 Claude thinks", "backgroundColor": "#a5d8ff"}
 ```
 
 ### 9. Mermaid Conversion
