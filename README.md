@@ -83,7 +83,7 @@ Open `http://localhost:3000` in your browser to see the live canvas.
 ## Install the Skill
 
 ```bash
-claude skill add --url https://raw.githubusercontent.com/robertmilven/excalidraw-video-diagrams/master/.claude/skills/excalidraw/SKILL.md
+claude skill add --url https://raw.githubusercontent.com/ainjection/excalidraw-video-diagrams/master/.claude/skills/excalidraw/SKILL.md
 ```
 
 Or manually: copy `.claude/skills/excalidraw/SKILL.md` into your project's `.claude/skills/excalidraw/` folder.
@@ -108,7 +108,7 @@ Once the MCP server is running and the skill is installed:
 ## Credits
 
 - Original skill by [RoboNuggets](https://github.com/robonuggets/excalidraw-skill)
-- Video features and new diagram types by [AI Injection](https://github.com/robertmilven)
+- Video features and new diagram types by [AI Injection](https://github.com/ainjection)
 
 ## License
 
