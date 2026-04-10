@@ -456,6 +456,247 @@ If anything fails: stop, fix it, re-screenshot, then continue.
 
 ---
 
+## New Diagram Types
+
+### Mind Map
+
+Central topic radiating outward with 2 levels of branches. Use ellipses for the hub, rectangles for branches.
+
+```json
+[
+  {"id": "hub", "type": "ellipse", "x": 400, "y": 250, "width": 160, "height": 80,
+   "backgroundColor": "transparent", "strokeColor": "#3b82f6", "strokeWidth": 3, "roughness": 0},
+  {"id": "hub-t", "type": "text", "x": 430, "y": 275, "text": "Main Topic", "fontSize": 20, "fontFamily": "helvetica", "strokeColor": "#e2e8f0"},
+  {"id": "b1", "type": "rectangle", "x": 650, "y": 120, "width": 160, "height": 50,
+   "backgroundColor": "transparent", "strokeColor": "#22c55e", "roughness": 0},
+  {"id": "b2", "type": "rectangle", "x": 650, "y": 280, "width": 160, "height": 50,
+   "backgroundColor": "transparent", "strokeColor": "#f59e0b", "roughness": 0},
+  {"id": "b3", "type": "rectangle", "x": 650, "y": 440, "width": 160, "height": 50,
+   "backgroundColor": "transparent", "strokeColor": "#ef4444", "roughness": 0},
+  {"id": "b4", "type": "rectangle", "x": 100, "y": 120, "width": 160, "height": 50,
+   "backgroundColor": "transparent", "strokeColor": "#8b5cf6", "roughness": 0},
+  {"id": "b5", "type": "rectangle", "x": 100, "y": 440, "width": 160, "height": 50,
+   "backgroundColor": "transparent", "strokeColor": "#ec4899", "roughness": 0},
+  {"type": "arrow", "x": 0, "y": 0, "startElementId": "hub", "endElementId": "b1", "strokeColor": "#22c55e"},
+  {"type": "arrow", "x": 0, "y": 0, "startElementId": "hub", "endElementId": "b2", "strokeColor": "#f59e0b"},
+  {"type": "arrow", "x": 0, "y": 0, "startElementId": "hub", "endElementId": "b3", "strokeColor": "#ef4444"},
+  {"type": "arrow", "x": 0, "y": 0, "startElementId": "hub", "endElementId": "b4", "strokeColor": "#8b5cf6"},
+  {"type": "arrow", "x": 0, "y": 0, "startElementId": "hub", "endElementId": "b5", "strokeColor": "#ec4899"}
+]
+```
+
+Add sub-branches from each branch node for level 2. Use thinner strokes (strokeWidth: 1) and smaller shapes for sub-items.
+
+### Timeline
+
+Horizontal layout with a central line, date markers above, and event cards below.
+
+```json
+[
+  {"type": "line", "x": 50, "y": 200, "width": 860, "height": 0,
+   "points": [[0,0],[860,0]], "strokeColor": "#475569", "strokeWidth": 3},
+  {"id": "t1-dot", "type": "ellipse", "x": 95, "y": 190, "width": 20, "height": 20,
+   "backgroundColor": "#3b82f6", "strokeColor": "#3b82f6", "roughness": 0},
+  {"type": "text", "x": 75, "y": 165, "text": "Jan 2025", "fontSize": 12, "fontFamily": "helvetica", "strokeColor": "#94a3b8"},
+  {"id": "t1-card", "type": "rectangle", "x": 50, "y": 230, "width": 150, "height": 60,
+   "backgroundColor": "transparent", "strokeColor": "#3b82f6", "roughness": 0},
+  {"type": "text", "x": 60, "y": 240, "text": "Phase 1\nResearch", "fontSize": 14, "fontFamily": "excalifont", "strokeColor": "#cbd5e1"},
+  {"id": "t2-dot", "type": "ellipse", "x": 315, "y": 190, "width": 20, "height": 20,
+   "backgroundColor": "#22c55e", "strokeColor": "#22c55e", "roughness": 0},
+  {"type": "text", "x": 295, "y": 165, "text": "Mar 2025", "fontSize": 12, "fontFamily": "helvetica", "strokeColor": "#94a3b8"},
+  {"id": "t2-card", "type": "rectangle", "x": 270, "y": 230, "width": 150, "height": 60,
+   "backgroundColor": "transparent", "strokeColor": "#22c55e", "roughness": 0},
+  {"type": "text", "x": 280, "y": 240, "text": "Phase 2\nDevelopment", "fontSize": 14, "fontFamily": "excalifont", "strokeColor": "#cbd5e1"}
+]
+```
+
+Repeat the pattern for each timeline event. Space dots 220px apart on the main line.
+
+### Comparison / VS Layout
+
+Two columns with a divider. Color-code each side.
+
+```json
+[
+  {"type": "text", "x": 350, "y": 20, "text": "VS", "fontSize": 36, "fontFamily": "helvetica", "strokeColor": "#64748b"},
+  {"type": "line", "x": 400, "y": 70, "width": 0, "height": 350, "points": [[0,0],[0,350]],
+   "strokeColor": "#334155", "strokeWidth": 2, "strokeStyle": "dashed"},
+  {"type": "text", "x": 140, "y": 30, "text": "Option A", "fontSize": 28, "fontFamily": "helvetica", "strokeColor": "#3b82f6"},
+  {"type": "text", "x": 530, "y": 30, "text": "Option B", "fontSize": 28, "fontFamily": "helvetica", "strokeColor": "#22c55e"},
+  {"type": "rectangle", "x": 50, "y": 80, "width": 300, "height": 50,
+   "backgroundColor": "transparent", "strokeColor": "#3b82f6", "roughness": 0},
+  {"type": "text", "x": 70, "y": 93, "text": "Feature 1 description", "fontSize": 15, "fontFamily": "excalifont", "strokeColor": "#cbd5e1"},
+  {"type": "rectangle", "x": 450, "y": 80, "width": 300, "height": 50,
+   "backgroundColor": "transparent", "strokeColor": "#22c55e", "roughness": 0},
+  {"type": "text", "x": 470, "y": 93, "text": "Feature 1 description", "fontSize": 15, "fontFamily": "excalifont", "strokeColor": "#cbd5e1"}
+]
+```
+
+Add rows at 70px intervals. Use checkmark emojis (✅) and cross (❌) for feature comparisons.
+
+### Funnel Diagram
+
+Wide top tapering to narrow bottom. 4 stages with labels and numbers.
+
+```json
+[
+  {"type": "rectangle", "x": 100, "y": 50, "width": 600, "height": 60,
+   "backgroundColor": "transparent", "strokeColor": "#3b82f6", "roughness": 0, "strokeWidth": 2},
+  {"type": "text", "x": 320, "y": 65, "text": "Awareness - 10,000", "fontSize": 18, "fontFamily": "helvetica", "strokeColor": "#3b82f6"},
+  {"type": "rectangle", "x": 175, "y": 130, "width": 450, "height": 60,
+   "backgroundColor": "transparent", "strokeColor": "#8b5cf6", "roughness": 0, "strokeWidth": 2},
+  {"type": "text", "x": 320, "y": 145, "text": "Interest - 3,500", "fontSize": 18, "fontFamily": "helvetica", "strokeColor": "#8b5cf6"},
+  {"type": "rectangle", "x": 250, "y": 210, "width": 300, "height": 60,
+   "backgroundColor": "transparent", "strokeColor": "#f59e0b", "roughness": 0, "strokeWidth": 2},
+  {"type": "text", "x": 325, "y": 225, "text": "Decision - 800", "fontSize": 18, "fontFamily": "helvetica", "strokeColor": "#f59e0b"},
+  {"type": "rectangle", "x": 325, "y": 290, "width": 150, "height": 60,
+   "backgroundColor": "transparent", "strokeColor": "#22c55e", "roughness": 0, "strokeWidth": 2},
+  {"type": "text", "x": 345, "y": 305, "text": "Sale - 200", "fontSize": 18, "fontFamily": "helvetica", "strokeColor": "#22c55e"}
+]
+```
+
+### Cycle Diagram
+
+Nodes arranged in a circle with arrows forming a loop. Best for 4-6 step processes.
+
+```json
+[
+  {"id": "c1", "type": "ellipse", "x": 340, "y": 40, "width": 120, "height": 60,
+   "backgroundColor": "transparent", "strokeColor": "#3b82f6", "roughness": 0},
+  {"type": "text", "x": 365, "y": 58, "text": "Plan", "fontSize": 16, "fontFamily": "helvetica", "strokeColor": "#3b82f6"},
+  {"id": "c2", "type": "ellipse", "x": 560, "y": 180, "width": 120, "height": 60,
+   "backgroundColor": "transparent", "strokeColor": "#22c55e", "roughness": 0},
+  {"type": "text", "x": 588, "y": 198, "text": "Build", "fontSize": 16, "fontFamily": "helvetica", "strokeColor": "#22c55e"},
+  {"id": "c3", "type": "ellipse", "x": 460, "y": 350, "width": 120, "height": 60,
+   "backgroundColor": "transparent", "strokeColor": "#f59e0b", "roughness": 0},
+  {"type": "text", "x": 488, "y": 368, "text": "Test", "fontSize": 16, "fontFamily": "helvetica", "strokeColor": "#f59e0b"},
+  {"id": "c4", "type": "ellipse", "x": 220, "y": 350, "width": 120, "height": 60,
+   "backgroundColor": "transparent", "strokeColor": "#ef4444", "roughness": 0},
+  {"type": "text", "x": 240, "y": 368, "text": "Deploy", "fontSize": 16, "fontFamily": "helvetica", "strokeColor": "#ef4444"},
+  {"id": "c5", "type": "ellipse", "x": 120, "y": 180, "width": 120, "height": 60,
+   "backgroundColor": "transparent", "strokeColor": "#8b5cf6", "roughness": 0},
+  {"type": "text", "x": 138, "y": 198, "text": "Review", "fontSize": 16, "fontFamily": "helvetica", "strokeColor": "#8b5cf6"},
+  {"type": "arrow", "x": 0, "y": 0, "startElementId": "c1", "endElementId": "c2", "strokeColor": "#475569"},
+  {"type": "arrow", "x": 0, "y": 0, "startElementId": "c2", "endElementId": "c3", "strokeColor": "#475569"},
+  {"type": "arrow", "x": 0, "y": 0, "startElementId": "c3", "endElementId": "c4", "strokeColor": "#475569"},
+  {"type": "arrow", "x": 0, "y": 0, "startElementId": "c4", "endElementId": "c5", "strokeColor": "#475569"},
+  {"type": "arrow", "x": 0, "y": 0, "startElementId": "c5", "endElementId": "c1", "strokeColor": "#475569"}
+]
+```
+
+---
+
+## Video-Ready Presets
+
+### 1080p Layout (1920x1080)
+
+Safe content area: 100px padding on all sides = 1720x880 usable space.
+
+| Element | Value |
+|---------|-------|
+| Canvas origin | x: 100, y: 100 |
+| Max content width | 1720px |
+| Max content height | 880px |
+| Title position | x: 100, y: 100, fontSize: 44 |
+| Footer/tagline | x: 100, y: 940, fontSize: 16 |
+| Center point | x: 960, y: 540 |
+
+### 4K Layout (3840x2160)
+
+Safe content area: 200px padding = 3440x1760 usable space. Double all dimensions from 1080p.
+
+### Title Card Preset
+
+Centered text block for scene intro cards:
+
+```json
+[
+  {"type": "text", "x": 560, "y": 420, "text": "Your Title Here",
+   "fontSize": 64, "fontFamily": "helvetica", "strokeColor": "#e2e8f0"},
+  {"type": "text", "x": 660, "y": 510, "text": "Subtitle or tagline",
+   "fontSize": 28, "fontFamily": "excalifont", "strokeColor": "#64748b"},
+  {"type": "line", "x": 760, "y": 500, "width": 400, "height": 0,
+   "points": [[0,0],[400,0]], "strokeColor": "#3b82f6", "strokeWidth": 3}
+]
+```
+
+### Scene Overlay Preset
+
+Diagram positioned in upper 70% of frame, leaving room for lower-third text bar:
+
+- Content area: y: 80 to y: 750 (670px tall)
+- Lower third zone: y: 780 to y: 1000 (reserved for text overlays in video)
+- Keep all diagram elements above y: 750
+
+### Dark Theme Defaults
+
+Always start video diagrams with these settings:
+- Canvas background: handled by video editor (transparent export preferred)
+- Stroke colors: use bright palette (#3b82f6, #22c55e, #a78bfa, #f59e0b, #ef4444, #06b6d4)
+- Text colors: #e2e8f0 for headings, #cbd5e1 for body, #94a3b8 for secondary
+- Shape backgrounds: always `"transparent"` (shapes are outlines only)
+- Minimum font size: 18px body, 32px titles (must be readable at 1080p)
+- Minimum stroke width: 2px (thin lines disappear on video)
+
+---
+
+## Animation Frames Workflow
+
+Build a diagram in stages and export a screenshot after each stage. The result is a series of PNGs that can be sequenced in video editing (Remotion, Premiere, etc.) to show the diagram "building itself."
+
+### Steps
+
+1. **Plan the build order** -- decide which elements appear first (usually: title, then main nodes, then connections, then details)
+2. **Clear canvas** -- start fresh
+3. **Stage 1** -- add the first group of elements (e.g., title + background zones)
+4. **Screenshot** -- `export_to_image` with a numbered filename (e.g., `frame-01.png`)
+5. **Stage 2** -- add the next group (e.g., main nodes)
+6. **Screenshot** -- `frame-02.png`
+7. **Repeat** until all elements are on canvas
+8. **Final screenshot** -- the complete diagram
+
+### Example: 5-Stage Flowchart Build
+
+```
+Stage 1: Title + background zone rectangles          -> frame-01.png
+Stage 2: Add main process boxes (4 rectangles)       -> frame-02.png
+Stage 3: Add arrows connecting the boxes              -> frame-03.png
+Stage 4: Add decision diamond + Yes/No paths          -> frame-04.png
+Stage 5: Add labels, descriptions, footer tagline     -> frame-05.png
+```
+
+Each frame is a complete PNG. In Remotion, display each for 2-3 seconds with a fade transition between them.
+
+### Tips
+- Export at 1920x1080 for direct use in 1080p video
+- Use consistent naming: `frame-01.png`, `frame-02.png`, etc.
+- Keep 20+ frames between stages in Remotion (at 30fps = ~0.7s per stage minimum)
+- Add a blank dark frame as `frame-00.png` for the initial fade-in
+
+---
+
+## Workflow: Video Explainer Diagram
+
+Step-by-step for creating diagrams specifically for video content:
+
+1. **Set up for video** -- use 1080p preset dimensions (content within 100-1820 x, 100-980 y)
+2. **Dark canvas** -- design for dark backgrounds, bright strokes, transparent shape fills
+3. **Large text** -- minimum 18px body, 32px titles, 44px main heading. Text must be readable on a phone screen.
+4. **Plan stages** -- decide the build-up order for animation frames
+5. **Build stage by stage** -- `batch_create_elements` per stage, screenshot after each
+6. **Quality check** -- run the Quality Checklist on the final frame
+7. **Export all frames** -- numbered PNGs for video sequence
+8. **Export final** -- full diagram as PNG and .excalidraw (for later editing)
+
+### Video Text Rules
+- Max 6 words per box label
+- Max 3 lines per description
+- No font below 16px
+- High contrast only (bright on dark)
+- Leave 150px margin at bottom for lower-third overlays
+
+---
+
 ## Error Recovery
 
 - **Elements not appearing?** They may be off-screen. Use `set_viewport` with `scrollToContent: true`
